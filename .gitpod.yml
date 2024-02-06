@@ -3,18 +3,29 @@ image: gitpod/workspace-full
 additionalRepositories:
   - url: https://github.com/MadVikingGod/otel-semconv-checker
     checkoutLocation: otel-semconv-checker
-  - url: https://github.com/open-telemetry/opentelemetry-go
+  - url: https://github.com/MadVikingGod/opentelemetry-go
     checkoutLocation: opentelemetry-go
-  - url: https://github.com/open-telemetry/opentelemetry-go-contrib
+  - url: https://github.com/MadVikingGod/opentelemetry-go-contrib
     checkoutLocation: opentelemetry-go-contrib
 
+gitConfig:
+  user.email: "MadVikingGod@users.noreply.github.com"
+  gpg.format: ssh
+  user.signingkey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHPdIwQYIwlUajS57ZA2QSkDwD+rflRJveg4Gg1sOI+y
+  commit.gpgSign: "true"
+  gpg.ssh.allowedSignersFile: /workspace/otel-gitpod/allowed_signers
+  alias.lg1: "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
 tasks:
-  - name: git-config
-    command: 
-      git config --global user.email "";
+  - name: git
+    init: |
+      git config --global user.email "MadVikingGod@users.noreply.github.com";
       git config --global gpg.format ssh;
       git config --global user.signingkey "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHPdIwQYIwlUajS57ZA2QSkDwD+rflRJveg4Gg1sOI+y";
-      git config --global alias.lg1 'log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all'
+      git config --global commit.gpgSign true;
+      git config --global alias.lg1 "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
+
   - name: opentelemetry-go
     command: |
       cd ../opentelemetry-go; 
