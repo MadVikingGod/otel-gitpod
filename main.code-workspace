@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"name": "gitpod",
+			"path": "."
+		},
+		{
+			"path": "../opentelemetry-go"
+		},
+		{
+			"path": "../opentelemetry-go-contrib"
+		},
+		{
+			"path": "../otel-semconv-checker"
+		}
+	],
+	"settings": {}
+}

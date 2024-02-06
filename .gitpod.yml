@@ -11,13 +11,15 @@ additionalRepositories:
 tasks:
   - name: opentelemetry-go
     command: |
-      cd ../opentelemetry-go
-      make precommit
+      cd ../opentelemetry-go; 
+      make tools go-mod-tidy build; 
   - name: opentelemetry-go-contrib
     command: |
-      cd ../opentelemetry-go-contrib
-      make precommit
+      cd ../opentelemetry-go-contrib; 
+      make tools go-mod-tidy build; 
   - name: otel-semconv-checker
     command: |
-      cd ../otel-semconv-checker
-      go get ./...
+      cd ../otel-semconv-checker; 
+      go get ./...; 
+      cd test/go; 
+      go get ./...; 
