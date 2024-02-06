@@ -1,0 +1,23 @@
+image: gitpod/workspace-full
+
+additionalRepositories:
+  - url: https://github.com/MadVikingGod/otel-semconv-checker
+    checkoutLocation: otel-semconv-checker
+  - url: https://github.com/open-telemetry/opentelemetry-go
+    checkoutLocation: opentelemetry-go
+  - url: https://github.com/open-telemetry/opentelemetry-go-contrib
+    checkoutLocation: opentelemetry-go-contrib
+
+tasks:
+  - name: opentelemetry-go
+    command: |
+      cd ../opentelemetry-go
+      make precommit
+  - name: opentelemetry-go-contrib
+    command: |
+      cd ../opentelemetry-go-contrib
+      make precommit
+  - name: otel-semconv-checker
+    command: |
+      cd ../otel-semconv-checker
+      go get ./...
