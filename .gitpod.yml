@@ -9,6 +9,12 @@ additionalRepositories:
     checkoutLocation: opentelemetry-go-contrib
 
 tasks:
+  - name: git-config
+    command: 
+      git config --global user.email "";
+      git config --global gpg.format ssh;
+      git config --global user.signingkey "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHPdIwQYIwlUajS57ZA2QSkDwD+rflRJveg4Gg1sOI+y";
+      git config --global alias.lg1 'log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all'
   - name: opentelemetry-go
     command: |
       cd ../opentelemetry-go; 
